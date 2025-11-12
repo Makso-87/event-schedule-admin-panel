@@ -1,0 +1,29 @@
+.TopPanel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #aeaeae;
+    padding: 10px;
+
+    .Logo {
+    }
+
+    .UserData {
+        display: flex;
+
+        .Avatar {
+        }
+
+        .Info {
+            .Name {
+            }
+            .Email {
+            }
+            .Phone {
+            }
+        }
+
+        .EscapeButton {
+        }
+    }
+}

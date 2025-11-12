@@ -1,0 +1,27 @@
+.EventsList {
+    .Title {
+        margin: 0 0 20px;
+    }
+
+    .NewEventButton {
+        margin: 0 0 20px;
+    }
+
+    .EventsListTable {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+
+        th {
+            &:last-child {
+                width: 14%;
+            }
+        }
+
+        td {
+            &:last-child {
+                text-align: center;
+            }
+        }
+    }
+}
