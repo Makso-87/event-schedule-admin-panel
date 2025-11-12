@@ -1,0 +1,7 @@
+mutation CreateCategory($input: CreateEventCategoryInput!) {
+    createCategory(input: $input) {
+        id
+        name
+        color
+    }
+}
