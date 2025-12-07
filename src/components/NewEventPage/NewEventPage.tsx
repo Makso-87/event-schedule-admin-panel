@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
-import { TextInput } from '@mantine/core';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
+import { Button } from '@mantine/core';
 import classes from './NewEventPage.module.scss';
-import { setOfInputsEvent } from '../../constants';
+import { ROUTE_EVENTS_PAGE, setOfInputsEvent } from '../../constants';
+import { InputMapper } from '../InputMapper/InputMapper';
+import { setCategories } from '../../store/slices/categoriesListSlice';
+import { getCategories } from '../../api/getCategories';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-toolkit-hooks';
+import { createEvent } from '../../api/createEvent';
+import { getDateObject } from '../../utils/getDateObject';
+import { useNavigate } from 'react-router-dom';
+import { getEvents } from '../../api/getEvents';
+import { setEvents } from '../../store/slices/eventsListSlice';
 
 type TState = {
     state: string;
@@ -18,6 +27,12 @@ export const NewEventPage = () => {
     const [stateUrl, setStateUrl] = useState('');
     const [stateLent, setStateLent] = useState('');
     const [stateCategory, setStateCategory] = useState('');
+    const [errors, setErrors] = useState([]);
+
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const categories = useAppSelector((state) => state.categoriesList.categories);
+    const categoriesSelectData = categories.map((item) => item.name);
 
     const states: Record<string, TState> = {
         name: { state: stateName, setState: setStateName },
@@ -31,26 +46,104 @@ export const NewEventPage = () => {
         category: { state: stateCategory, setState: setStateCategory },
     };
 
+    const onButtonClick: MouseEventHandler = async (event) => {
+        event.preventDefault();
+
+        const errorsList = new Set();
+
+        if (!stateName) {
+            errorsList.add({
+                message: 'Необходимо ввести название мероприятия',
+            });
+        }
+
+        if (!stateStartDate) {
+            errorsList.add({
+                message: 'Необходимо указать дату начала мероприятия',
+            });
+        }
+
+        if (!statePlace) {
+            errorsList.add({
+                message: 'Необходимо указать место проведения мероприятия',
+            });
+        }
+
+        if (!stateCategory) {
+            errorsList.add({
+                message: 'Необходимо выбрать категорию мероприятия',
+            });
+        }
+
+        if (stateName && stateStartDate && statePlace && stateCategory) {
+            const category = categories.find((item) => item.name === stateCategory);
+
+            const { data, errors } = await createEvent({
+                name: stateName,
+                startDate: getDateObject(stateStartDate),
+                endDate: getDateObject(stateEndDate),
+                startTime: stateStartTime,
+                endTime: stateEndTime,
+                place: statePlace,
+                lent: stateLent,
+                categoryId: category?.id,
+            });
+
+            if (data) {
+                const eventsList = await getEvents();
+                dispatch(setEvents(eventsList));
+                navigate(ROUTE_EVENTS_PAGE);
+            } else {
+                errors.forEach((error) => errorsList.add(error));
+            }
+        }
+
+        setErrors([...Array.from(errorsList)]);
+    };
+
+    useEffect(() => {
+        if (!categories.length) {
+            (async () => {
+                const { categories, errors } = await getCategories();
+
+                if (categories) {
+                    dispatch(setCategories(categories));
+                }
+            })();
+        }
+    }, []);
+
     return (
         <div className={classes.NewEventPage}>
             <h1 className={classes.Title}>Новое событие</h1>
 
             {setOfInputsEvent.map((item) => {
                 return (
-                    <TextInput
-                        label='Floating label'
-                        placeholder='OMG, it also has a placeholder'
-                        required
-                        classNames={classes}
+                    <InputMapper
+                        key={item.name}
+                        input={item}
                         value={states[item.name].state}
-                        onChange={(event) => states[item.name].setState(event.currentTarget.value)}
-                        mt='md'
-                        autoComplete='nope'
-                        // data-floating={floating}
-                        // labelProps={{ 'data-floating': floating }}
+                        categoriesSelectData={categoriesSelectData}
+                        handler={(arg: InputEvent | string) => {
+                            states[item.name].setState(
+                                typeof arg !== 'string' ? (arg.currentTarget as HTMLInputElement).value : arg,
+                            );
+                        }}
                     />
                 );
             })}
+
+            <Button onClick={onButtonClick} className={classes.Button}>
+                Создать событие
+            </Button>
+
+            {errors.length ? (
+                <div className={classes.Errors}>
+                    {errors.map((error) => {
+                        return <p className={classes.ErrorsItem}>{error.message}</p>;
+                    })}
+                </div>
+            ) : null}
         </div>
     );
 };

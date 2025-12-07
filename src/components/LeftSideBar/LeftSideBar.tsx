@@ -14,12 +14,12 @@ export const LeftSideBar = () => {
             <ul className={classes.List}>
                 {leftSideBarItems.map((item) => {
                     const listItemClasses = cn(classes.ListItem, {
-                        [classes.Active]: item.type === location.pathname.replace('/', ''),
+                        [classes.Active]: item.type.includes(location.pathname.replace('/', '')),
                     });
 
                     return (
-                        <li className={listItemClasses}>
-                            <Link key={Math.random()} to={item.redirectRoute} className={classes.Link}>
+                        <li key={Math.random()} className={listItemClasses}>
+                            <Link to={item.redirectRoute} className={classes.Link}>
                                 {' '}
                                 {item.name}{' '}
                             </Link>

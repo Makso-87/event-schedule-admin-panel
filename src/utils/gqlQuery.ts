@@ -11,6 +11,7 @@ export const gqlQuery = async (
         .query({
             query,
             variables,
+            fetchPolicy: 'network-only',
         })
         .then((res): TGraphQLResponse => {
             const { data, errors } = res as unknown as TGraphQLResponse;
