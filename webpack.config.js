@@ -64,7 +64,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
+        extensions: ['.tsx', '.ts', '.js', '.css', '.scss', '.graphql'],
     },
     output: {
         filename: 'bundle.js',

@@ -1,0 +1,44 @@
+@use '../../variables.scss';
+
+.ConfirmPopupLayout {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.ConfirmPopup {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    background: variables.$color-white;
+    box-shadow: variables.$box-shadow-default;
+    padding: 15px;
+    transform: translateY(-50%);
+    border-radius: 5px;
+
+    .Title {
+        text-align: center;
+        margin: 0 0 5px;
+    }
+
+    .Text {
+        text-align: center;
+        font-size: 15px;
+        line-height: 18px;
+        margin: 0 0 15px;
+    }
+
+    .Buttons {
+        display: flex;
+        column-gap: 10px;
+        justify-content: center;
+
+        .Button {
+            min-width: 100px;
+        }
+    }
+}

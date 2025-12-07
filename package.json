@@ -4,7 +4,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "dev": "webpack serve",
-    "graphql-gen": "npx graphql-codegen --verbose"
+    "graphql-gen": "graphql-codegen"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "graphql": "^16.11.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.0"
   },

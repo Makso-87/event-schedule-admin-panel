@@ -12,6 +12,10 @@
         border: 1px solid #dee2e6;
         border-radius: 5px;
 
+        tr {
+            position: relative;
+        }
+
         th {
             &:last-child {
                 width: 14%;
@@ -21,6 +25,25 @@
         td {
             &:last-child {
                 text-align: center;
+            }
+
+            .ActionIconButton {
+                border: none;
+
+                &.DeleteEventButton {
+                    .Icon {
+                        color: #d51919;
+                        width: 100%;
+                    }
+                }
+
+                &.EditEventButton {
+                    margin: 0 10px;
+
+                    .Icon {
+                        color: #228be6;
+                    }
+                }
             }
         }
     }
