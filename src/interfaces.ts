@@ -96,5 +96,16 @@ export interface IInput {
     defaultValue: string;
     placeholder: string;
     value: string;
-    onChange: () => void;
+    required: boolean;
+}
+
+export interface ICreateEventQueryParams {
+    name: string;
+    startDate: Date;
+    endDate?: Date;
+    startTime?: string;
+    endTime?: string;
+    place: string;
+    categoryId: string;
+    lent?: string;
 }
