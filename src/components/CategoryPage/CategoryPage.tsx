@@ -88,7 +88,7 @@ export const CategoryPage = () => {
     };
 
     return (
-        <div className={classes.EventPage}>
+        <div className={classes.CategoryPage}>
             <Button onClick={onBackButtonClick} className={classes.BackButton}>
                 Назад
             </Button>

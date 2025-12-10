@@ -25,6 +25,11 @@ export const NewCategoryPage = () => {
         color: { state: stateColor, setState: setStateColor },
     };
 
+    const onBackButtonClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.preventDefault();
+        navigate(ROUTE_CATEGORIES_PAGE);
+    };
+
     const onButtonClick: MouseEventHandler = async (event) => {
         event.preventDefault();
 
@@ -62,7 +67,11 @@ export const NewCategoryPage = () => {
     };
 
     return (
-        <div className={classes.NewEventPage}>
+        <div className={classes.NewCategoryPage}>
+            <Button onClick={onBackButtonClick} className={classes.BackButton}>
+                Назад
+            </Button>
+
             <h1 className={classes.Title}>Новая категория</h1>
 
             {setOfInputsEventsCategory.map((item) => {

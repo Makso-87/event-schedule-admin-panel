@@ -42,6 +42,11 @@ export const NewEventPage = () => {
         category: { state: stateCategory, setState: setStateCategory },
     };
 
+    const onBackButtonClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.preventDefault();
+        navigate(ROUTE_EVENTS_PAGE);
+    };
+
     const onButtonClick: MouseEventHandler = async (event) => {
         event.preventDefault();
 
@@ -112,6 +117,10 @@ export const NewEventPage = () => {
 
     return (
         <div className={classes.NewEventPage}>
+            <Button onClick={onBackButtonClick} className={classes.BackButton}>
+                Назад
+            </Button>
+
             <h1 className={classes.Title}>Новое событие</h1>
 
             {setOfInputsEvent.map((item) => {

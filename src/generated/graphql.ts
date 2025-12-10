@@ -206,6 +206,13 @@ export type CreateEventMutationVariables = Exact<{
 
 export type CreateEventMutation = { __typename?: 'Mutation', createEvent: { __typename?: 'Event', id: string, name: string, startDate: any, endDate?: any | null, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } } };
 
+export type DeleteCategoriesMutationVariables = Exact<{
+  input: DeleteEventCategoryInput;
+}>;
+
+
+export type DeleteCategoriesMutation = { __typename?: 'Mutation', deleteCategories: Array<string> };
+
 export type DeleteEventsMutationVariables = Exact<{
   input: DeleteEventsInput;
 }>;
@@ -290,6 +297,14 @@ export const CreateEventDocument = gql`
 export type CreateEventMutationFn = Apollo.MutationFunction<CreateEventMutation, CreateEventMutationVariables>;
 export type CreateEventMutationResult = Apollo.MutationResult<CreateEventMutation>;
 export type CreateEventMutationOptions = Apollo.BaseMutationOptions<CreateEventMutation, CreateEventMutationVariables>;
+export const DeleteCategoriesDocument = gql`
+    mutation deleteCategories($input: DeleteEventCategoryInput!) {
+  deleteCategories(input: $input)
+}
+    `;
+export type DeleteCategoriesMutationFn = Apollo.MutationFunction<DeleteCategoriesMutation, DeleteCategoriesMutationVariables>;
+export type DeleteCategoriesMutationResult = Apollo.MutationResult<DeleteCategoriesMutation>;
+export type DeleteCategoriesMutationOptions = Apollo.BaseMutationOptions<DeleteCategoriesMutation, DeleteCategoriesMutationVariables>;
 export const DeleteEventsDocument = gql`
     mutation deleteEvents($input: DeleteEventsInput!) {
   deleteEvents(input: $input)
