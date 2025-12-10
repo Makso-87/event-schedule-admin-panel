@@ -111,3 +111,33 @@ export const setOfInputsEvent: IInput[] = [
         placeholder: 'Выберите категорию',
     },
 ];
+
+export const setOfInputsEventsCategory: IInput[] = [
+    {
+        name: 'name',
+        type: EInputType.Text,
+        label: 'Название',
+        defaultValue: '',
+        value: '',
+        required: true,
+        placeholder: 'Укажите название',
+    },
+    {
+        name: 'description',
+        type: EInputType.TextArea,
+        label: 'Описание',
+        defaultValue: '',
+        value: '',
+        required: false,
+        placeholder: 'Добавьте описание категории',
+    },
+    {
+        name: 'color',
+        type: EInputType.Color,
+        label: 'Цвет категории',
+        defaultValue: '',
+        value: '',
+        required: true,
+        placeholder: 'Укажите цвет',
+    },
+];

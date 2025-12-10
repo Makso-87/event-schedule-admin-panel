@@ -5,6 +5,7 @@ export enum EEntityGroupType {
 
 export enum EInputType {
     Text = 'text',
+    TextArea = 'textArea',
     Color = 'color',
     Date = 'date',
     Time = 'time',

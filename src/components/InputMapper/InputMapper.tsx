@@ -1,5 +1,5 @@
 import React, { ChangeEventHandler } from 'react';
-import { ColorInput, Select, TextInput } from '@mantine/core';
+import { ColorInput, Select, Textarea, TextInput } from '@mantine/core';
 import { DatePickerInput, TimeInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import classes from './InputMapper.module.scss';
@@ -16,13 +16,25 @@ export const InputMapper = ({
     input: IInput;
     handler: (arg: InputEvent | string) => void | ChangeEventHandler<HTMLInputElement>;
     value: string;
-    categoriesSelectData: string[];
+    categoriesSelectData?: string[];
 }) => {
     const { label, placeholder, name, defaultValue, type, required } = input;
 
     const inputMap = {
         [EInputType.Text]: (
             <TextInput
+                name={name}
+                label={label}
+                placeholder={placeholder}
+                value={value ?? defaultValue}
+                // @ts-ignore
+                onChange={handler as ChangeEventHandler}
+                required={required}
+                className={classes.Input}
+            />
+        ),
+        [EInputType.TextArea]: (
+            <Textarea
                 name={name}
                 label={label}
                 placeholder={placeholder}
