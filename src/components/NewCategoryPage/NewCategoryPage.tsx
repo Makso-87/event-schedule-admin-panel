@@ -38,7 +38,7 @@ export const NewCategoryPage = () => {
 
         if (!stateColor) {
             errorsList.add({
-                message: 'Необходимо указать категории',
+                message: 'Необходимо указать цвет категории',
             });
         }
 
@@ -63,7 +63,7 @@ export const NewCategoryPage = () => {
 
     return (
         <div className={classes.NewEventPage}>
-            <h1 className={classes.Title}>Новое событие</h1>
+            <h1 className={classes.Title}>Новая категория</h1>
 
             {setOfInputsEventsCategory.map((item) => {
                 return (

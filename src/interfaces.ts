@@ -110,12 +110,17 @@ export interface ICreateEventQueryParams {
     lent?: string;
     url?: string;
 }
+
+export interface IUpdateEventQueryParams extends ICreateEventQueryParams {
+    id: string;
+}
+
 export interface ICreateCategoryQueryParams {
     name: string;
     description?: string;
     color: string;
 }
 
-export interface IUpdateEventQueryParams extends ICreateEventQueryParams {
+export interface IUpdateCategoryQueryParams extends ICreateCategoryQueryParams {
     id: string;
 }

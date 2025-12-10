@@ -220,6 +220,13 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: string };
 
+export type UpdateCategoryMutationVariables = Exact<{
+  input: UpdateEventCategoryInput;
+}>;
+
+
+export type UpdateCategoryMutation = { __typename?: 'Mutation', updateCategory: { __typename?: 'EventCategory', id: string, name: string, description: string, color: string } };
+
 export type UpdateEventMutationVariables = Exact<{
   input: UpdateEventInput;
 }>;
@@ -299,6 +306,19 @@ export const LoginDocument = gql`
 export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const UpdateCategoryDocument = gql`
+    mutation updateCategory($input: UpdateEventCategoryInput!) {
+  updateCategory(input: $input) {
+    id
+    name
+    description
+    color
+  }
+}
+    `;
+export type UpdateCategoryMutationFn = Apollo.MutationFunction<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
+export type UpdateCategoryMutationResult = Apollo.MutationResult<UpdateCategoryMutation>;
+export type UpdateCategoryMutationOptions = Apollo.BaseMutationOptions<UpdateCategoryMutation, UpdateCategoryMutationVariables>;
 export const UpdateEventDocument = gql`
     mutation updateEvent($input: UpdateEventInput!) {
   updateEvent(input: $input) {
