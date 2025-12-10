@@ -1,5 +1,5 @@
-mutation CreateEvent($input: CreateEventInput!) {
-    createEvent(input: $input) {
+mutation updateEvent($input: UpdateEventInput!) {
+    updateEvent(input: $input) {
         id
         name
         startDate

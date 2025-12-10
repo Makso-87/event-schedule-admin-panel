@@ -64,7 +64,15 @@ export const EventsList: FC<IEventPageProps> = ({ events }) => {
                                       <Table.Td>{name}</Table.Td>
                                       <Table.Td>{place}</Table.Td>
                                       <Table.Td>{lent ?? ''}</Table.Td>
-                                      <Table.Td>{url ?? ''}</Table.Td>
+                                      <Table.Td>
+                                          {url ? (
+                                              <a href={url} target='_blank'>
+                                                  {url}
+                                              </a>
+                                          ) : (
+                                              ''
+                                          )}
+                                      </Table.Td>
                                       <Table.Td>
                                           <ActionIcon
                                               size='lg'

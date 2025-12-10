@@ -16,8 +16,11 @@ export const CategoriesPage = () => {
 
     useEffect(() => {
         (async () => {
-            const categoriesList = await getCategories();
-            dispatch(setCategories(categoriesList));
+            const { categories, errors } = await getCategories();
+
+            if (categories) {
+                dispatch(setCategories(categories));
+            }
         })();
     }, []);
 

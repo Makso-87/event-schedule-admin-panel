@@ -8,3 +8,12 @@ export type TGraphQLResponse = {
 export type TProps = {
     children: ReactNode;
 };
+
+export type TValidationRulesType = {
+    [key: string]: RegExp;
+};
+
+export type TState = {
+    state: string;
+    setState: (value: string) => void;
+};

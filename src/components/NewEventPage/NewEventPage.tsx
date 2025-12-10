@@ -1,6 +1,8 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@mantine/core';
 import classes from './NewEventPage.module.scss';
+import { TState } from '../../types';
 import { ROUTE_EVENTS_PAGE, setOfInputsEvent } from '../../constants';
 import { InputMapper } from '../InputMapper/InputMapper';
 import { setCategories } from '../../store/slices/categoriesListSlice';
@@ -8,14 +10,8 @@ import { getCategories } from '../../api/getCategories';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-toolkit-hooks';
 import { createEvent } from '../../api/createEvent';
 import { getDateObject } from '../../utils/getDateObject';
-import { useNavigate } from 'react-router-dom';
 import { getEvents } from '../../api/getEvents';
 import { setEvents } from '../../store/slices/eventsListSlice';
-
-type TState = {
-    state: string;
-    setState: (value: string) => void;
-};
 
 export const NewEventPage = () => {
     const [stateName, setStateName] = useState('');
@@ -86,6 +82,7 @@ export const NewEventPage = () => {
                 endTime: stateEndTime,
                 place: statePlace,
                 lent: stateLent,
+                url: stateUrl,
                 categoryId: category?.id,
             });
 

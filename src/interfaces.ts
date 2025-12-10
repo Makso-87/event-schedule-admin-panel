@@ -108,4 +108,9 @@ export interface ICreateEventQueryParams {
     place: string;
     categoryId: string;
     lent?: string;
+    url?: string;
+}
+
+export interface IUpdateEventQueryParams extends ICreateEventQueryParams {
+    id: string;
 }

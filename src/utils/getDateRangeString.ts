@@ -11,6 +11,6 @@ const formatDate = (dateString: string): string => {
 export const getDateRangeString = (dates: Pick<IEvent, 'startDate' | 'startTime' | 'endDate' | 'endTime'>) => {
     const { startDate, startTime, endDate, endTime } = dates;
     const start = `${formatDate(startDate)}${getTime(startTime)}`;
-    const end = `${formatDate(endDate)}${getTime(endTime)}`;
-    return `${start} - ${end}`;
+    const end = ` - ${formatDate(endDate)}${getTime(endTime)}`;
+    return `${start}${endDate ? end : ''}`;
 };

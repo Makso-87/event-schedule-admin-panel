@@ -162,16 +162,16 @@ export type UpdateEventCategoryInput = {
 };
 
 export type UpdateEventInput = {
-  categoryId: Scalars['String']['input'];
-  endDate: Scalars['DateTimeISO']['input'];
-  endTime: Scalars['String']['input'];
+  categoryId?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  endTime?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['String']['input'];
-  lent: Scalars['String']['input'];
-  name: Scalars['String']['input'];
-  place: Scalars['String']['input'];
-  startDate: Scalars['DateTimeISO']['input'];
-  startTime: Scalars['String']['input'];
-  url: Scalars['String']['input'];
+  lent?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  place?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  startTime?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type User = {
@@ -191,6 +191,13 @@ export type User = {
 export type UsersDeleteInput = {
   ids: Array<Scalars['String']['input']>;
 };
+
+export type CreateCategoryMutationVariables = Exact<{
+  input: CreateEventCategoryInput;
+}>;
+
+
+export type CreateCategoryMutation = { __typename?: 'Mutation', createCategory: { __typename?: 'EventCategory', id: string, name: string, color: string } };
 
 export type CreateEventMutationVariables = Exact<{
   input: CreateEventInput;
@@ -213,17 +220,17 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: string };
 
+export type UpdateEventMutationVariables = Exact<{
+  input: UpdateEventInput;
+}>;
+
+
+export type UpdateEventMutation = { __typename?: 'Mutation', updateEvent: { __typename?: 'Event', id: string, name: string, startDate: any, endDate?: any | null, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } } };
+
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'EventCategory', id: string, name: string, color: string, description: string, events?: Array<{ __typename?: 'Event', id: string, name: string }> | null }> };
-
-export type CreateCategoryMutationVariables = Exact<{
-  input: CreateEventCategoryInput;
-}>;
-
-
-export type CreateCategoryMutation = { __typename?: 'Mutation', createCategory: { __typename?: 'EventCategory', id: string, name: string, color: string } };
 
 export type EventsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -241,6 +248,18 @@ export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
 export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', id: string, firstName: string, middleName: string, lastName: string, phone: string, email: string, password: string }> };
 
 
+export const CreateCategoryDocument = gql`
+    mutation CreateCategory($input: CreateEventCategoryInput!) {
+  createCategory(input: $input) {
+    id
+    name
+    color
+  }
+}
+    `;
+export type CreateCategoryMutationFn = Apollo.MutationFunction<CreateCategoryMutation, CreateCategoryMutationVariables>;
+export type CreateCategoryMutationResult = Apollo.MutationResult<CreateCategoryMutation>;
+export type CreateCategoryMutationOptions = Apollo.BaseMutationOptions<CreateCategoryMutation, CreateCategoryMutationVariables>;
 export const CreateEventDocument = gql`
     mutation CreateEvent($input: CreateEventInput!) {
   createEvent(input: $input) {
@@ -280,6 +299,29 @@ export const LoginDocument = gql`
 export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
 export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
+export const UpdateEventDocument = gql`
+    mutation updateEvent($input: UpdateEventInput!) {
+  updateEvent(input: $input) {
+    id
+    name
+    startDate
+    endDate
+    startTime
+    endTime
+    place
+    url
+    lent
+    category {
+      id
+      name
+      color
+    }
+  }
+}
+    `;
+export type UpdateEventMutationFn = Apollo.MutationFunction<UpdateEventMutation, UpdateEventMutationVariables>;
+export type UpdateEventMutationResult = Apollo.MutationResult<UpdateEventMutation>;
+export type UpdateEventMutationOptions = Apollo.BaseMutationOptions<UpdateEventMutation, UpdateEventMutationVariables>;
 export const CategoriesDocument = gql`
     query Categories {
   categories {
@@ -295,18 +337,6 @@ export const CategoriesDocument = gql`
 }
     `;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
-export const CreateCategoryDocument = gql`
-    mutation CreateCategory($input: CreateEventCategoryInput!) {
-  createCategory(input: $input) {
-    id
-    name
-    color
-  }
-}
-    `;
-export type CreateCategoryMutationFn = Apollo.MutationFunction<CreateCategoryMutation, CreateCategoryMutationVariables>;
-export type CreateCategoryMutationResult = Apollo.MutationResult<CreateCategoryMutation>;
-export type CreateCategoryMutationOptions = Apollo.BaseMutationOptions<CreateCategoryMutation, CreateCategoryMutationVariables>;
 export const EventsDocument = gql`
     query Events {
   events {

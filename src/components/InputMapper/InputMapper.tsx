@@ -42,6 +42,7 @@ export const InputMapper = ({
                 firstDayOfWeek={0}
                 highlightToday={true}
                 locale={'ru'}
+                value={value}
                 valueFormatter={({ date }) => {
                     if (date) {
                         const dateObject = getDateObject(date as string);
@@ -80,6 +81,7 @@ export const InputMapper = ({
             <Select
                 name={name}
                 label={label}
+                value={value}
                 placeholder={placeholder}
                 data={categoriesSelectData}
                 onChange={handler}
