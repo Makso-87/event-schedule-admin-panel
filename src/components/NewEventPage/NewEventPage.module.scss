@@ -1,0 +1,22 @@
+@use '../../variables.scss' as *;
+
+.NewEventPage {
+    .Title {
+    }
+
+    .BackButton {
+        margin: 0 0 10px;
+    }
+
+    .Button {
+        margin: 30px 0 0;
+    }
+
+    .Errors {
+        margin: 10px 0 0;
+
+        .ErrorsItem {
+            color: $color-red;
+        }
+    }
+}

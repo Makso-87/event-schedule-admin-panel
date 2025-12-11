@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["node_modules/@types", "src/@types"],
+  },
+  "files": ["src/@types/graphql.d.ts"],
+  "include": ["*.ts", "src/**/*.tsx", "src/**/*.ts", "declaration.d.ts"],
+}

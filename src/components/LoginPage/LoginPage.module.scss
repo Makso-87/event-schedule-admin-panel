@@ -1,0 +1,43 @@
+//@use '../../variables.scss';
+
+.LoginPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    .Form {
+        width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+        .Title {
+            margin: 0 0 20px;
+        }
+
+        .Input {
+            margin: 0 0 10px;
+            width: 100%;
+        }
+
+        .Button {
+            margin: 20px 0 0;
+            width: 150px;
+        }
+
+        .ErrorsContainer {
+            .ErrorMessage {
+                font-size: 12px;
+                line-height: 15px;
+                color: #ff0000;
+            }
+        }
+    }
+}

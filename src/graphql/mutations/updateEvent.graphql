@@ -1,0 +1,18 @@
+mutation updateEvent($input: UpdateEventInput!) {
+    updateEvent(input: $input) {
+        id
+        name
+        startDate
+        endDate
+        startTime
+        endTime
+        place
+        url
+        lent
+        category {
+            id
+            name
+            color
+        }
+    }
+}

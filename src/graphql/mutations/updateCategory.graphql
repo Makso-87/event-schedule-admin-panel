@@ -1,0 +1,8 @@
+mutation updateCategory($input: UpdateEventCategoryInput!) {
+    updateCategory(input: $input) {
+        id
+        name
+        description
+        color
+    }
+}

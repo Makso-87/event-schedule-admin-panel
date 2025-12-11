@@ -1,0 +1,35 @@
+.LeftSideBar {
+    width: 200px;
+    margin: 20px 0 0;
+    border: 1px solid #aeaeae;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .List {
+        list-style-type: none;
+
+        .ListItem {
+            border-bottom: 1px solid #aeaeae;
+
+            &.Active {
+                background: #228be6;
+
+                .Link {
+                    color: #fff;
+                }
+            }
+
+            &:last-child {
+                border: none;
+            }
+
+            .Link {
+                display: inline-block;
+                padding: 5px 10px;
+                text-decoration: none;
+                width: 100%;
+                color: #000000;
+            }
+        }
+    }
+}
