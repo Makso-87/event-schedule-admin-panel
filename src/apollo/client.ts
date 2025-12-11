@@ -1,10 +1,11 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import { AUTH_TOKEN_TEXT } from '../constants';
 import { setContext } from '@apollo/client/link/context';
+import { AUTH_TOKEN_TEXT } from '../constants';
+import { SERVICE_URL } from '../env';
 
 // Создаем HTTP-ссылку
 const httpLink = createHttpLink({
-    uri: 'http://localhost:16108', // ваш GraphQL endpoint
+    uri: SERVICE_URL, // ваш GraphQL endpoint
 });
 
 // Промежуточный слой для авторизации
