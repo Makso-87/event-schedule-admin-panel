@@ -4,6 +4,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "dev": "webpack serve",
+    "build": "webpack build --config webpack.config.js",
     "graphql-gen": "graphql-codegen"
   },
   "repository": {
