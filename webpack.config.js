@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 const appDirectory = fs.realpathSync(process.cwd());
 
@@ -80,6 +81,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
+        }),
+        new DefinePlugin({
+            'process.env.SERVICE_URL': JSON.stringify(process.env.SERVICE_URL || ''),
         }),
     ],
 };
