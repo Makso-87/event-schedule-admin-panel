@@ -52,6 +52,6 @@ jobs:
           
           docker compose build calendar-admin
           
-          docker compose up
+          docker compose up -d
           
           docker image prune -f
