@@ -22,7 +22,7 @@ jobs:
       run: npm ci
 
     - name: Build application
-      run: npm run build.yml
+      run: npm run build
       env:
         CI: false
 
