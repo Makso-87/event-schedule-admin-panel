@@ -25,6 +25,7 @@ import { EventPage } from './components/EventPage/EventPage';
 import { EventsPage } from './components/EventsPage/EventsPage';
 import { CategoriesPage } from './components/CategoriesPage/CategoriesPage';
 import { createTheme, MantineProvider } from '@mantine/core';
+import { MainPage } from './components/MainPage/MainPage';
 
 const theme = createTheme({});
 
@@ -47,7 +48,7 @@ export const App = () => {
                                     </RequireAuth>
                                 }
                             >
-                                {/*<Route index element={<MainPage />} />*/}
+                                <Route index element={<MainPage />} />
 
                                 <Route path={ROUTE_EVENTS_PAGE} element={<EventsPage />}>
                                     <Route path={ROUTE_EVENT_PAGE} element={<EventPage />} />

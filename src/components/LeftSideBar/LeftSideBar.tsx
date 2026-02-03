@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classes from './LeftSideBar.module.scss';
-import { leftSideBarItems } from '../../constants';
+import { leftSideBarItems, ROUTE_ROOT } from '../../constants';
 import cn from 'classnames';
 
 export const LeftSideBar = () => {
@@ -14,7 +14,9 @@ export const LeftSideBar = () => {
             <ul className={classes.List}>
                 {leftSideBarItems.map((item) => {
                     const listItemClasses = cn(classes.ListItem, {
-                        [classes.Active]: item.type.includes(location.pathname.replace('/', '')),
+                        [classes.Active]:
+                            location.pathname !== ROUTE_ROOT &&
+                            item.type.includes(location.pathname.replace(ROUTE_ROOT, '')),
                     });
 
                     return (
