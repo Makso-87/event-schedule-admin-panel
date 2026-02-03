@@ -1,3 +1,10 @@
 .MainPage {
-  .Wrap{}
+    .RightSide {
+        width: 100%;
+        padding: 20px;
+
+        .Title {
+            text-align: center;
+        }
+    }
 }

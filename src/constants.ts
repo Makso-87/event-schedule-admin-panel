@@ -1,6 +1,7 @@
 import { EEntityGroupType, EInputType } from './enums';
 import { IInput } from './interfaces';
 
+export const MAIN_TITLE = 'Панель управления событиями и категорями событий Московского общества сознания Кришны';
 export const NEW_EVENT_TEXT_BUTTON = 'Добавить событие';
 export const NEW_CATEGORY_TEXT_BUTTON = 'Добавить категорию';
 export const AUTH_TOKEN_TEXT = 'token';

@@ -1,12 +1,13 @@
 .LeftSideBar {
     width: 200px;
     margin: 20px 0 0;
-    border: 1px solid #aeaeae;
-    border-radius: 5px;
+
     overflow: hidden;
 
     .List {
         list-style-type: none;
+        border: 1px solid #aeaeae;
+        border-radius: 5px;
 
         .ListItem {
             border-bottom: 1px solid #aeaeae;
