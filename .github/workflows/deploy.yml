@@ -3,8 +3,6 @@ name: Deploy calendar-admin
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -24,7 +22,7 @@ jobs:
       run: npm ci
 
     - name: Build application
-      run: npm run build
+      run: npm run build.yml
       env:
         CI: false
 
@@ -54,6 +52,6 @@ jobs:
           
           docker compose build calendar-admin
           
-          docker compose up -d calendar-admin
+          docker compose up
           
           docker image prune -f

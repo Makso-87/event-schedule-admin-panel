@@ -4,10 +4,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
 const appDirectory = fs.realpathSync(process.cwd());
-const envFile = fs.readFileSync(path.resolve(appDirectory, '.env'), { encoding: 'utf8' });
 
-const getEnvData = (file) => {
-    return file.split('\n').reduce((acc, env) => {
+let envFile;
+
+try {
+    envFile = fs.readFileSync(path.resolve(appDirectory, '.env'), { encoding: 'utf8' });
+} catch (err) {
+    envFile = '';
+}
+
+const getEnvData = (string) => {
+    if (!string || !string.length) {
+        return {};
+    }
+
+    return string.split('\n').reduce((acc, env) => {
         const [key, value] = env.split('=');
 
         return {
