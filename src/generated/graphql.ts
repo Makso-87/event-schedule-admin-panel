@@ -239,7 +239,7 @@ export type UpdateEventMutationVariables = Exact<{
 }>;
 
 
-export type UpdateEventMutation = { __typename?: 'Mutation', updateEvent: { __typename?: 'Event', id: string, name: string, startDate: any, endDate?: any | null, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } } };
+export type UpdateEventMutation = { __typename?: 'Mutation', updateEvent: { __typename?: 'Event', id: string, name: string, startDate: any, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } } };
 
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -249,7 +249,7 @@ export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __type
 export type EventsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename?: 'Event', id: string, name: string, startDate: any, endDate?: any | null, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } }> };
+export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename?: 'Event', id: string, name: string, startDate: any, startTime?: string | null, endTime?: string | null, place: string, url?: string | null, lent?: string | null, category: { __typename?: 'EventCategory', id: string, name: string, color: string } }> };
 
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -340,7 +340,6 @@ export const UpdateEventDocument = gql`
     id
     name
     startDate
-    endDate
     startTime
     endTime
     place
@@ -378,7 +377,6 @@ export const EventsDocument = gql`
     id
     name
     startDate
-    endDate
     startTime
     endTime
     place

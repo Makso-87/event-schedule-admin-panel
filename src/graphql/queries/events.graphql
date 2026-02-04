@@ -3,7 +3,6 @@ query Events {
         id
         name
         startDate
-        endDate
         startTime
         endTime
         place

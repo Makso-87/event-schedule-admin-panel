@@ -19,7 +19,7 @@ export const EventPage = () => {
     const dispatch = useAppDispatch();
     const { id } = useParams();
     const events = useAppSelector((state) => state.eventsList.events);
-    const { name, category, startDate, endDate, startTime, endTime, lent, url, place } =
+    const { name, category, startDate, startTime, endTime, lent, url, place } =
         events.find((event) => event.id === id) || {};
 
     const categories = useAppSelector((state) => state.categoriesList.categories);
@@ -32,7 +32,6 @@ export const EventPage = () => {
 
     const [stateName, setStateName] = useState(name ?? null);
     const [stateStartDate, setStateStartDate] = useState(startDate ?? null);
-    const [stateEndDate, setStateEndDate] = useState(endDate ?? null);
     const [stateStartTime, setStateStartTime] = useState(startTime ?? null);
     const [stateEndTime, setStateEndTime] = useState(endTime ?? null);
     const [statePlace, setStatePlace] = useState(place ?? null);
@@ -47,7 +46,6 @@ export const EventPage = () => {
             name,
             categoryId: category.id,
             startDate,
-            endDate,
             startTime,
             endTime,
             lent,
@@ -59,7 +57,6 @@ export const EventPage = () => {
             name: stateName,
             categoryId: currentCategory ? currentCategory.id : null,
             startDate: stateStartDate ? getDateObject(stateStartDate)?.toISOString() : stateStartDate,
-            endDate: stateEndDate ? getDateObject(stateEndDate).toISOString() : stateEndDate,
             startTime: stateStartTime,
             endTime: stateEndTime,
             lent: stateLent,
@@ -73,7 +70,6 @@ export const EventPage = () => {
     const states: Record<string, TState> = {
         name: { state: stateName, setState: setStateName },
         startDate: { state: stateStartDate, setState: setStateStartDate },
-        endDate: { state: stateEndDate, setState: setStateEndDate },
         startTime: { state: stateStartTime, setState: setStateStartTime },
         endTime: { state: stateEndTime, setState: setStateEndTime },
         place: { state: statePlace, setState: setStatePlace },
@@ -118,7 +114,6 @@ export const EventPage = () => {
                 id,
                 name: stateName,
                 startDate: getDateObject(stateStartDate),
-                endDate: getDateObject(stateEndDate),
                 startTime: stateStartTime,
                 endTime: stateEndTime,
                 place: statePlace,

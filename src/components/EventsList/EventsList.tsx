@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ActionIcon, Button, Table } from '@mantine/core';
+import { ActionIcon, Button, Select, Table } from '@mantine/core';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import cn from 'classnames';
 import classes from './EventsList.module.scss';
@@ -56,11 +56,11 @@ export const EventsList: FC<IEventPageProps> = ({ events }) => {
                 <Table.Tbody>
                     {events?.length
                         ? events.map((event) => {
-                              const { startDate, startTime, endDate, endTime, name, place, lent, url, id } = event;
+                              const { startDate, startTime, endTime, name, place, lent, url, id } = event;
 
                               return (
                                   <Table.Tr key={id}>
-                                      <Table.Td>{`${getDateRangeString({ startDate, startTime, endDate, endTime })}`}</Table.Td>
+                                      <Table.Td>{`${getDateRangeString({ startDate, startTime, endTime })}`}</Table.Td>
                                       <Table.Td>{name}</Table.Td>
                                       <Table.Td>{place}</Table.Td>
                                       <Table.Td>{lent ?? ''}</Table.Td>
