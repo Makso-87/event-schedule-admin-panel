@@ -47,7 +47,6 @@ export interface IEvent {
     id: string;
     name: string;
     startDate: string;
-    endDate: string;
     startTime: string;
     endTime: string;
     place: string;
@@ -102,7 +101,6 @@ export interface IInput {
 export interface ICreateEventQueryParams {
     name: string;
     startDate: Date;
-    endDate?: Date;
     startTime?: string;
     endTime?: string;
     place: string;

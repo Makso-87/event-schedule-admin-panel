@@ -16,7 +16,6 @@ import { setEvents } from '../../store/slices/eventsListSlice';
 export const NewEventPage = () => {
     const [stateName, setStateName] = useState('');
     const [stateStartDate, setStateStartDate] = useState('');
-    const [stateEndDate, setStateEndDate] = useState('');
     const [stateStartTime, setStateStartTime] = useState('');
     const [stateEndTime, setStateEndTime] = useState('');
     const [statePlace, setStatePlace] = useState('');
@@ -33,7 +32,6 @@ export const NewEventPage = () => {
     const states: Record<string, TState> = {
         name: { state: stateName, setState: setStateName },
         startDate: { state: stateStartDate, setState: setStateStartDate },
-        endDate: { state: stateEndDate, setState: setStateEndDate },
         startTime: { state: stateStartTime, setState: setStateStartTime },
         endTime: { state: stateEndTime, setState: setStateEndTime },
         place: { state: statePlace, setState: setStatePlace },
@@ -82,7 +80,6 @@ export const NewEventPage = () => {
             const { data, errors } = await createEvent({
                 name: stateName,
                 startDate: getDateObject(stateStartDate),
-                endDate: getDateObject(stateEndDate),
                 startTime: stateStartTime,
                 endTime: stateEndTime,
                 place: statePlace,

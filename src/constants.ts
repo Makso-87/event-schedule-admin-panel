@@ -49,15 +49,6 @@ export const setOfInputsEvent: IInput[] = [
         placeholder: 'Укажите дату начала',
     },
     {
-        name: 'endDate',
-        type: EInputType.Date,
-        label: 'Дата окончания',
-        defaultValue: '',
-        value: '',
-        required: false,
-        placeholder: 'Укажите дату окончания',
-    },
-    {
         name: 'startTime',
         type: EInputType.Time,
         label: 'Время начала',

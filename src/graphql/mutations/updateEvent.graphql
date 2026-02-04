@@ -3,7 +3,6 @@ mutation updateEvent($input: UpdateEventInput!) {
         id
         name
         startDate
-        endDate
         startTime
         endTime
         place
